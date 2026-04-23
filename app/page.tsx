@@ -1,64 +1,106 @@
-import Image from "next/image";
+import HeroCarousel from "./components/HeroCarousel";
+import LocationsSection from "./components/LocationsSection";
+import PropertyGallery from "./components/PropertyGallery";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="bg-slate-50 text-slate-950">
+      <main className="overflow-hidden">
+        <HeroCarousel />
+
+        <section id="propiedades" className="bg-slate-50 py-20">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-amber-500">Selección Curada</p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950">Propiedades Exclusivas</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-600">
+                Descubre nuestra selección de inmuebles premium en las mejores ubicaciones de la ciudad.
+              </p>
+            </div>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              {['Todos','Casa','Penthouse','Departamento','Suite','Ático'].map((tab) => (
+                <button key={tab} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-amber-300 hover:text-slate-900">
+                  {tab}
+                </button>
+              ))}
+            </div>
+            <PropertyGallery />
+          </div>
+        </section>
+
+        <section id="testimonios" className="bg-white py-20">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-amber-500">Clientes Satisfechos</p>
+              <h2 className="mt-4 text-4xl font-semibold tracking-tight text-slate-950">Lo Que Dicen Nuestros Clientes</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-slate-600">
+                Experiencias reales de familias que encontraron su hogar ideal con nosotros.
+              </p>
+            </div>
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+              {[
+                { quote:'Bienestar Inmobiliario superó todas mis expectativas. Encontraron el penthouse perfecto en tiempo récord. Su servicio personalizado y conocimiento del mercado son incomparables.', name:'Carlos Mendoza', role:'Empresario · Ciudad de México' },
+                { quote:'La atención fue excepcional desde el primer contacto. Lograron entender exactamente lo que buscaba y me presentaron propiedades que jamás hubiera encontrado por mi cuenta.', name:'Gabriela Torres', role:'Directora de Marca · Polanco, CDMX' },
+                { quote:'Invertí en tres propiedades con su asesoría y el retorno ha sido excelente. Son verdaderos expertos en el mercado premium.', name:'Roberto Jiménez', role:'Director de Finanzas · Santa Fe, CDMX' },
+              ].map((testimonial) => (
+                <article key={testimonial.name} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
+                  <p className="text-slate-700">“{testimonial.quote}”</p>
+                  <div className="mt-6 flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-slate-200" />
+                    <div>
+                      <p className="font-semibold text-slate-950">{testimonial.name}</p>
+                      <p className="text-sm text-slate-500">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <LocationsSection />
+
+        <footer className="bg-slate-950 py-12 text-slate-300">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid gap-8 lg:grid-cols-[1.2fr_0.9fr_0.9fr_0.8fr]">
+              <div>
+                <div className="mb-4 text-2xl font-semibold text-white">Bienestar Inmobiliario</div>
+                <p className="max-w-sm text-sm leading-7">
+                  Tu hogar, tu bienestar. Más de 15 años conectando familias con los inmuebles de sus sueños.
+                </p>
+              </div>
+              <div>
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-amber-400">Explorar</p>
+                <ul className="space-y-3 text-sm text-slate-400">
+                  <li>Propiedades en Venta</li>
+                  <li>Propiedades en Renta</li>
+                  <li>Desarrollos Nuevos</li>
+                  <li>Inversiones</li>
+                </ul>
+              </div>
+              <div>
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-amber-400">Servicios</p>
+                <ul className="space-y-3 text-sm text-slate-400">
+                  <li>Asesoría Personalizada</li>
+                  <li>Valuación Gratuita</li>
+                  <li>Tours Virtuales</li>
+                  <li>Consultoría Legal</li>
+                </ul>
+              </div>
+              <div>
+                <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-amber-400">Contáctanos</p>
+                <div className="space-y-3 text-sm text-slate-400">
+                  <p>+52 55 1234 5678</p>
+                  <p>contacto@bienestarinmobiliario.mx</p>
+                  <p>Av. Presidente Masaryk 111, Polanco, CDMX</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-10 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
+              © 2026 Bienestar Inmobiliario. Todos los derechos reservados.
+            </div>
+          </div>
+        </footer>
       </main>
     </div>
   );
