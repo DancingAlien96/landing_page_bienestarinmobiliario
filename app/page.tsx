@@ -17,13 +17,6 @@ export default function Home() {
                 Descubre nuestra selección de inmuebles premium en las mejores ubicaciones de la ciudad.
               </p>
             </div>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              {['Todos','Casa','Penthouse','Departamento','Suite','Ático'].map((tab) => (
-                <button key={tab} className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-amber-300 hover:text-slate-900">
-                  {tab}
-                </button>
-              ))}
-            </div>
             <PropertyGallery />
           </div>
         </section>
@@ -39,9 +32,9 @@ export default function Home() {
             </div>
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {[
-                { quote:'Bienestar Inmobiliario superó todas mis expectativas. Encontraron el penthouse perfecto en tiempo récord. Su servicio personalizado y conocimiento del mercado son incomparables.', name:'Carlos Mendoza', role:'Empresario · Ciudad de México' },
-                { quote:'La atención fue excepcional desde el primer contacto. Lograron entender exactamente lo que buscaba y me presentaron propiedades que jamás hubiera encontrado por mi cuenta.', name:'Gabriela Torres', role:'Directora de Marca · Polanco, CDMX' },
-                { quote:'Invertí en tres propiedades con su asesoría y el retorno ha sido excelente. Son verdaderos expertos en el mercado premium.', name:'Roberto Jiménez', role:'Director de Finanzas · Santa Fe, CDMX' },
+                { quote:'Bienestar Inmobiliario superó todas mis expectativas. Encontraron el penthouse perfecto en tiempo récord. Su servicio personalizado y conocimiento del mercado son incomparables.', name:'Carlos Mendoza', role:'Empresario ' },
+                { quote:'La atención fue excepcional desde el primer contacto. Lograron entender exactamente lo que buscaba y me presentaron propiedades que jamás hubiera encontrado por mi cuenta.', name:'Gabriela Torres', role:'Directora de Marca ' },
+                { quote:'Invertí en tres propiedades con su asesoría y el retorno ha sido excelente. Son verdaderos expertos en el mercado premium.', name:'Roberto Jiménez', role:'Director de Finanzas ' },
               ].map((testimonial) => (
                 <article key={testimonial.name} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
                   <p className="text-slate-700">“{testimonial.quote}”</p>
