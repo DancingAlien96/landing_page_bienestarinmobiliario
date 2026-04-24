@@ -123,14 +123,10 @@ export default function HeroCarousel() {
                 Hablar con un asesor
               </a>
             </div>
-            <div className="mt-14 grid max-w-lg grid-cols-3 gap-6 text-center text-white sm:max-w-2xl">
+            <div className="mt-14 grid max-w-lg grid-cols-2 gap-6 text-center text-white sm:max-w-2xl">
               <div>
-                <span className="block text-3xl font-semibold">500+</span>
-                <span className="mt-2 block text-sm text-slate-200">Ventas</span>
-              </div>
-              <div>
-                <span className="block text-3xl font-semibold">15</span>
-                <span className="mt-2 block text-sm text-slate-200">Años</span>
+                <span className="block text-3xl font-semibold">8</span>
+                <span className="mt-2 block text-sm text-slate-200">Años de experiencia</span>
               </div>
               <div>
                 <span className="block text-3xl font-semibold">98%</span>
