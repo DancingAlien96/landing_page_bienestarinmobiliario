@@ -70,16 +70,6 @@ export default function LocationsSection() {
               <p className="max-w-xl text-base leading-7 text-slate-700">
                 Visualiza la ubicación exacta de {selectedLocation.label} en el mapa. Usa las coordenadas o el código Plus para encontrarla fácilmente.
               </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl bg-slate-950 p-6 text-white">
-                  <p className="text-sm uppercase tracking-[0.18em] text-amber-300">Propiedades Activas</p>
-                  <p className="mt-3 text-3xl font-semibold">46</p>
-                </div>
-                <div className="rounded-3xl bg-slate-950 p-6 text-white">
-                  <p className="text-sm uppercase tracking-[0.18em] text-amber-300">Zonas Premium</p>
-                  <p className="mt-3 text-3xl font-semibold">5</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

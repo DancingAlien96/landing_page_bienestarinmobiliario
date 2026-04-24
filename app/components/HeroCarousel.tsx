@@ -54,6 +54,7 @@ export default function HeroCarousel() {
                   src="/logo_bienestar_inmobiliario.png"
                   alt="Logo Bienestar Inmobiliario"
                   fill
+                  sizes="48px"
                   className="object-contain"
                 />
               </div>

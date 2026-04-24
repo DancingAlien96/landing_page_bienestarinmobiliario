@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 const properties = [
   {
-    label: "Exclusivo",
+    label: "El Dorado",
     title: "El Dorado",
     price: "Q300,000",
     location: "Km 173 Ruta a Esquipulas, Chiquimula",
@@ -17,7 +17,12 @@ const properties = [
     ],
     services: ["Agua", "Luz", "Drenajes", "Garita de seguridad", "Calles adoquinadas"],
     amenities: ["Parques infantiles", "Áreas verdes", "Área de piscinas"],
-    gallery: ["/dorado5.jpg", "/dorado1.jpg", "/dorado2.jpg", "/dorado3.jpg"],
+    gallery: [
+      { type: "image", src: "/dorado5.jpg" },
+      { type: "image", src: "/dorado1.jpg" },
+      { type: "image", src: "/dorado2.jpg" },
+      { type: "image", src: "/dorado3.jpg" },
+    ],
   },
   {
     label: "Verona",
@@ -32,7 +37,14 @@ const properties = [
     ],
     services: ["Agua", "Luz", "Drenajes", "Garita de seguridad", "Muro perimetral", "Calles adoquinadas"],
     amenities: ["Áreas verdes", "Calles amplias", "Seguridad perimetral"],
-    gallery: ["/verona2.jpg", "/verona1.jpg", "/verona3.jpg", "/verona4.jpg", "/verona5.jpg"],
+    gallery: [
+      { type: "image", src: "/verona2.jpg" },
+      { type: "image", src: "/verona1.jpg" },
+      { type: "video", src: "https://www.youtube.com/embed/J5LmJCptL30" },
+      { type: "image", src: "/verona3.jpg" },
+      { type: "image", src: "/verona4.jpg" },
+      { type: "image", src: "/verona5.jpg" },
+    ],
   },
   {
     label: "Morales",
@@ -47,7 +59,7 @@ const properties = [
     ],
     services: ["Agua", "Luz", "Drenajes", "Muro perimetral", "Garita de seguridad", "Calles adoquinadas"],
     amenities: ["Acceso pavimentado", "Espacio industrial", "Excelente visibilidad"],
-    gallery: ["/morales_izabal.jpg"],
+    gallery: [{ type: "image", src: "/portada_izabal.jpg" }],
   },
 ];
 
@@ -56,8 +68,6 @@ export default function PropertyGallery() {
   const [activeImage, setActiveImage] = useState(0);
   const [open, setOpen] = useState(false);
 
-  const thumbnails = useMemo(() => selected.gallery, [selected]);
-
   return (
     <>
       <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -65,14 +75,27 @@ export default function PropertyGallery() {
           <article key={home.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_20px_80px_rgba(15,23,42,0.08)]">
             <div className="relative overflow-hidden rounded-t-[2rem]">
               <div className="relative aspect-[4/3] w-full bg-slate-200">
-                <Image
-                  src={home.gallery[0]}
-                  alt={home.title}
-                  fill
-                  quality={100}
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover"
-                />
+                {home.gallery[0].type === "image" ? (
+                  <Image
+                    src={home.gallery[0].src}
+                    alt={home.title}
+                    fill
+                    loading="eager"
+                    quality={100}
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover"
+                  />
+                ) : (
+                  <iframe
+                    src={home.gallery[0].src}
+                    className="h-full w-full"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`${home.title} video`}
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                )}
               </div>
               <div className="absolute left-4 top-4 z-10 rounded-full bg-slate-950/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white shadow-sm">
                 {home.label}
@@ -129,20 +152,32 @@ export default function PropertyGallery() {
               <div>
                 <div className="relative overflow-hidden rounded-[1.5rem] bg-slate-200">
                   <div className="relative h-[420px] w-full">
-                    <Image
-                      src={selected.gallery[activeImage]}
-                      alt={`${selected.title} imagen ${activeImage + 1}`}
-                      fill
-                      quality={100}
-                      sizes="100vw"
-                      className="object-cover"
-                    />
+                    {selected.gallery[activeImage].type === "image" ? (
+                      <Image
+                        src={selected.gallery[activeImage].src}
+                        alt={`${selected.title} imagen ${activeImage + 1}`}
+                        fill
+                        quality={100}
+                        sizes="100vw"
+                        className="object-cover"
+                      />
+                    ) : (
+                      <iframe
+                        src={selected.gallery[activeImage].src}
+                        className="h-full w-full"
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title={`${selected.title} video`}
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-3">
-                  {selected.gallery.map((src, index) => (
+                  {selected.gallery.map((item, index) => (
                     <button
-                      key={src}
+                      key={`${item.type}-${item.src}`}
                       type="button"
                       onClick={() => setActiveImage(index)}
                       className={`relative overflow-hidden rounded-3xl border p-1 transition ${
@@ -150,14 +185,21 @@ export default function PropertyGallery() {
                       }`}
                     >
                       <div className="relative h-20 w-28 sm:h-24 sm:w-32">
-                        <Image
-                          src={src}
-                          alt={`${selected.title} miniatura ${index + 1}`}
-                          fill
-                          quality={100}
-                          sizes="(max-width: 768px) 25vw, 8vw"
-                          className="rounded-3xl object-cover"
-                        />
+                        {item.type === "image" ? (
+                          <Image
+                            src={item.src}
+                            alt={`${selected.title} miniatura ${index + 1}`}
+                            fill
+                            quality={100}
+                            sizes="(max-width: 768px) 25vw, 8vw"
+                            className="rounded-3xl object-cover"
+                          />
+                        ) : (
+                          <div className="relative h-full w-full overflow-hidden rounded-3xl bg-black">
+                            <div className="absolute inset-0 bg-[url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\'><path fill=\'%23ffffff\' d=\'M8 5v14l11-7z\'/></svg>')] bg-center bg-no-repeat opacity-80" />
+                            <div className="absolute inset-0 bg-slate-950/60" />
+                          </div>
+                        )}
                       </div>
                     </button>
                   ))}

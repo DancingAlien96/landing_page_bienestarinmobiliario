@@ -83,16 +83,16 @@ export default function Home() {
                 <ul className="space-y-3 text-sm text-slate-400">
                   <li>Asesoría Personalizada</li>
                   <li>Valuación Gratuita</li>
-                  <li>Tours Virtuales</li>
+                  <li>Documentación legal</li>
                   <li>Consultoría Legal</li>
                 </ul>
               </div>
               <div>
                 <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-amber-400">Contáctanos</p>
                 <div className="space-y-3 text-sm text-slate-400">
-                  <p>+52 55 1234 5678</p>
+                  <p>+502 5354 1465</p>
                   <p>contacto@bienestarinmobiliario.mx</p>
-                  <p>Av. Presidente Masaryk 111, Polanco, CDMX</p>
+                  <p>Km 173 Ruta a Esquipulas, Chiquimula</p>
                 </div>
               </div>
             </div>
