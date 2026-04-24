@@ -59,7 +59,10 @@ const properties = [
     ],
     services: ["Agua", "Luz", "Drenajes", "Muro perimetral", "Garita de seguridad", "Calles adoquinadas"],
     amenities: ["Acceso pavimentado", "Espacio industrial", "Excelente visibilidad"],
-    gallery: [{ type: "image", src: "/portada_izabal.jpg" }],
+    gallery: [
+      { type: "image", src: "/portada_izabal.jpg" },
+      { type: "video", src: "https://www.youtube.com/embed/-IYUZWRRzvU" },
+    ],
   },
 ];
 
@@ -158,7 +161,7 @@ export default function PropertyGallery() {
                         alt={`${selected.title} imagen ${activeImage + 1}`}
                         fill
                         quality={100}
-                        sizes="100vw"
+                        sizes="(max-width: 1024px) 90vw, 720px"
                         className="object-cover"
                       />
                     ) : (
