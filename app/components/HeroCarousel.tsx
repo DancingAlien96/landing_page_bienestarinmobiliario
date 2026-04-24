@@ -105,7 +105,7 @@ export default function HeroCarousel() {
               Tu Hogar, <span className="text-amber-400">Tu Bienestar</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200 sm:text-xl">
-              Propiedades exclusivas seleccionadas para ti. Más de 15 años conectando familias con los mejores inmuebles del país.
+              Propiedades exclusivas seleccionadas para ti. Más de 8 años conectando familias con los mejores inmuebles del país.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
               <a

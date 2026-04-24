@@ -32,9 +32,9 @@ export default function Home() {
             </div>
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {[
-                { quote:'Bienestar Inmobiliario superó todas mis expectativas. Encontraron el penthouse perfecto en tiempo récord. Su servicio personalizado y conocimiento del mercado son incomparables.', name:'Carlos Mendoza', role:'Empresario ' },
-                { quote:'La atención fue excepcional desde el primer contacto. Lograron entender exactamente lo que buscaba y me presentaron propiedades que jamás hubiera encontrado por mi cuenta.', name:'Gabriela Torres', role:'Directora de Marca ' },
-                { quote:'Invertí en tres propiedades con su asesoría y el retorno ha sido excelente. Son verdaderos expertos en el mercado premium.', name:'Roberto Jiménez', role:'Director de Finanzas ' },
+                { quote:'Bienestar Inmobiliario superó todas mis expectativas. Encontraron el penthouse perfecto en tiempo récord. Su servicio personalizado y conocimiento del mercado son incomparables.', name:'Carlos Mendoza' },
+                { quote:'La atención fue excepcional desde el primer contacto. Lograron entender exactamente lo que buscaba y me presentaron propiedades que jamás hubiera encontrado por mi cuenta.', name:'Gabriela Torres'  },
+                { quote:'Invertí en tres propiedades con su asesoría y el retorno ha sido excelente. Son verdaderos expertos en el mercado premium.', name:'Roberto Jiménez' },
               ].map((testimonial) => (
                 <article key={testimonial.name} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
                   <p className="text-slate-700">“{testimonial.quote}”</p>
@@ -59,7 +59,7 @@ export default function Home() {
               <div>
                 <div className="mb-4 text-2xl font-semibold text-white">Bienestar Inmobiliario</div>
                 <p className="max-w-sm text-sm leading-7">
-                  Tu hogar, tu bienestar. Más de 15 años conectando familias con los inmuebles de sus sueños.
+                  Tu hogar, tu bienestar. Más de 8 años conectando familias con los inmuebles de sus sueños.
                 </p>
               </div>
               <div>

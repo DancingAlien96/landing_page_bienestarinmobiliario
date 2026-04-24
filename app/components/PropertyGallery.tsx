@@ -22,6 +22,8 @@ const properties = [
       { type: "image", src: "/dorado1.jpg" },
       { type: "image", src: "/dorado2.jpg" },
       { type: "image", src: "/dorado3.jpg" },
+      { type: "video", src: "https://www.youtube.com/embed/do2WAEab6_Y" },
+      { type: "video", src: "https://www.youtube.com/embed/do2WAEab6_Y" },
     ],
   },
   {
@@ -36,7 +38,7 @@ const properties = [
       { title: "Cuotas desde", value: "Q2,238/mes" },
     ],
     services: ["Agua", "Luz", "Drenajes", "Garita de seguridad", "Muro perimetral", "Calles adoquinadas"],
-    amenities: ["Áreas verdes", "Calles amplias", "Seguridad perimetral"],
+    amenities: ["Áreas verdes", "Calles amplias", "Seguridad perimetral", "Salon de eventos"],
     gallery: [
       { type: "image", src: "/verona2.jpg" },
       { type: "image", src: "/verona1.jpg" },
@@ -57,8 +59,8 @@ const properties = [
       { title: "Ideal para", value: "Bodega de distribución" },
       { title: "Incluye", value: "Agua, luz, drenaje, muro, garita" },
     ],
-    services: ["Agua", "Luz", "Drenajes", "Muro perimetral", "Garita de seguridad", "Calles adoquinadas"],
-    amenities: ["Acceso pavimentado", "Espacio industrial", "Excelente visibilidad"],
+    services: ["Agua", "Luz", "Drenajes", "Muro perimetral"],
+    
     gallery: [
       { type: "image", src: "/portada_izabal.jpg" },
       { type: "video", src: "https://www.youtube.com/embed/-IYUZWRRzvU" },
@@ -71,6 +73,12 @@ export default function PropertyGallery() {
   const [activeImage, setActiveImage] = useState(0);
   const [open, setOpen] = useState(false);
 
+  const displayGallery = selected?.gallery ?? [];
+  const activeGalleryItem = displayGallery[activeImage] ?? displayGallery[0];
+  const displayDetails = selected?.details ?? [];
+  const displayServices = selected?.services ?? [];
+  const displayAmenities = selected?.amenities ?? [];
+
   return (
     <>
       <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -78,9 +86,9 @@ export default function PropertyGallery() {
           <article key={home.title} className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_20px_80px_rgba(15,23,42,0.08)]">
             <div className="relative overflow-hidden rounded-t-[2rem]">
               <div className="relative aspect-[4/3] w-full bg-slate-200">
-                {home.gallery[0].type === "image" ? (
+                {home.gallery?.[0]?.type === "image" ? (
                   <Image
-                    src={home.gallery[0].src}
+                    src={home.gallery?.[0]?.src ?? "/verona1.jpg"}
                     alt={home.title}
                     fill
                     loading="eager"
@@ -88,9 +96,9 @@ export default function PropertyGallery() {
                     sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover"
                   />
-                ) : (
+                ) : home.gallery?.[0]?.src ? (
                   <iframe
-                    src={home.gallery[0].src}
+                    src={home.gallery?.[0]?.src ?? ""}
                     className="h-full w-full"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
@@ -98,6 +106,10 @@ export default function PropertyGallery() {
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
+                ) : (
+                  <div className="flex h-full items-center justify-center bg-slate-200 text-slate-500">
+                    Imagen no disponible
+                  </div>
                 )}
               </div>
               <div className="absolute left-4 top-4 z-10 rounded-full bg-slate-950/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white shadow-sm">
@@ -111,7 +123,7 @@ export default function PropertyGallery() {
               </div>
               <div className="mt-4 text-2xl font-semibold text-amber-500">{home.price}</div>
               <div className="mt-6 grid gap-3 rounded-3xl bg-slate-50 p-4 text-sm text-slate-600 sm:grid-cols-3">
-                {home.details.slice(0, 3).map((detail) => (
+                {(home.details ?? []).slice(0, 3).map((detail) => (
                   <div key={detail.title} className="flex items-center gap-2">
                     <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm">•</span>
                     <span>{detail.value}</span>
@@ -155,18 +167,18 @@ export default function PropertyGallery() {
               <div>
                 <div className="relative overflow-hidden rounded-[1.5rem] bg-slate-200">
                   <div className="relative h-[420px] w-full">
-                    {selected.gallery[activeImage].type === "image" ? (
+                    {activeGalleryItem?.type === "image" ? (
                       <Image
-                        src={selected.gallery[activeImage].src}
+                        src={activeGalleryItem.src ?? "/verona1.jpg"}
                         alt={`${selected.title} imagen ${activeImage + 1}`}
                         fill
                         quality={100}
                         sizes="(max-width: 1024px) 90vw, 720px"
                         className="object-cover"
                       />
-                    ) : (
+                    ) : activeGalleryItem?.src ? (
                       <iframe
-                        src={selected.gallery[activeImage].src}
+                        src={activeGalleryItem.src}
                         className="h-full w-full"
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
@@ -174,13 +186,17 @@ export default function PropertyGallery() {
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                       />
+                    ) : (
+                      <div className="flex h-full items-center justify-center bg-slate-200 text-slate-500">
+                        Imagen no disponible
+                      </div>
                     )}
                   </div>
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-3">
-                  {selected.gallery.map((item, index) => (
+                  {(selected.gallery ?? []).map((item, index) => (
                     <button
-                      key={`${item.type}-${item.src}`}
+                      key={`gallery-item-${index}`}
                       type="button"
                       onClick={() => setActiveImage(index)}
                       className={`relative overflow-hidden rounded-3xl border p-1 transition ${
@@ -218,7 +234,7 @@ export default function PropertyGallery() {
                     <p className="mt-2 text-3xl font-semibold text-slate-950">{selected.price}</p>
                   </div>
                   <div className="grid gap-3">
-                    {selected.details.map((detail) => (
+                    {(selected.details ?? []).map((detail) => (
                       <div key={detail.title} className="rounded-3xl bg-white p-4 shadow-sm">
                         <p className="text-sm text-slate-500">{detail.title}</p>
                         <p className="mt-1 text-base font-semibold text-slate-950">{detail.value}</p>
@@ -230,7 +246,7 @@ export default function PropertyGallery() {
                   <div>
                     <p className="text-sm uppercase tracking-[0.18em] text-amber-500">Servicios incluidos</p>
                     <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                      {selected.services.map((service) => (
+                      {(selected.services ?? []).map((service) => (
                         <li key={service}>• {service}</li>
                       ))}
                     </ul>
@@ -238,7 +254,7 @@ export default function PropertyGallery() {
                   <div>
                     <p className="text-sm uppercase tracking-[0.18em] text-amber-500">Amenidades</p>
                     <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                      {selected.amenities.map((amenity) => (
+                      {(selected.amenities ?? []).map((amenity) => (
                         <li key={amenity}>• {amenity}</li>
                       ))}
                     </ul>

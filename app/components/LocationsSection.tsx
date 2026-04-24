@@ -15,6 +15,12 @@ const locations = [
     description: "QF7G+VW Chiquimula",
     mapQuery: "QF7G+VW Chiquimula",
   },
+  {
+    id: "escuela-carmen-maria",
+    label: "Escuela Carmen María",
+    description: "G3VQ+FRH Escuela Privada de Auxiliares de Enfermería Carmen María Izabal, BUENOS AIRES",
+    mapQuery: "G3VQ+FRH Escuela Privada de Auxiliares de Enfermería Carmen María Izabal, BUENOS AIRES",
+  },
 ];
 
 export default function LocationsSection() {
