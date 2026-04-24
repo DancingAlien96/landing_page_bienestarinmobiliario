@@ -23,7 +23,7 @@ const properties = [
       { type: "image", src: "/dorado2.jpg" },
       { type: "image", src: "/dorado3.jpg" },
       { type: "video", src: "https://www.youtube.com/embed/do2WAEab6_Y" },
-      { type: "video", src: "https://www.youtube.com/embed/do2WAEab6_Y" },
+      { type: "video", src: "https://www.youtube.com/embed/zGtU7Ph-LKM?si=1-Xz7PapU9lBdHKb" },
     ],
   },
   {
