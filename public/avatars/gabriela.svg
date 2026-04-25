@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="24" fill="#fde68a" />
+  <circle cx="60" cy="42" r="24" fill="#1e293b" />
+  <path fill="#f8fafc" d="M40 88c0-10 8-18 20-18s20 8 20 18H40z" />
+  <path fill="#fb923c" d="M34 104c0-11 9-20 20-20h12c11 0 20 9 20 20H34z" />
+  <text x="60" y="78" font-size="22" font-family="Arial, sans-serif" fill="#ffffff" text-anchor="middle" font-weight="700">G</text>
+</svg>

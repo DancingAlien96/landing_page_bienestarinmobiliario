@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="24" fill="#ede9fe" />
+  <circle cx="60" cy="42" r="24" fill="#0f172a" />
+  <path fill="#f8fafc" d="M38 88c0-10 8-18 20-18s20 8 20 18H38z" />
+  <path fill="#a855f7" d="M32 104c0-11 9-20 20-20h16c11 0 20 9 20 20H32z" />
+  <text x="60" y="72" font-size="18" font-family="Arial, sans-serif" fill="#ffffff" text-anchor="middle" font-weight="700">L</text>
+</svg>

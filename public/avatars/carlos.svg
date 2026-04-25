@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="24" fill="#dbeafe" />
+  <circle cx="60" cy="44" r="26" fill="#0f172a" />
+  <path fill="#f8fafc" d="M40 90c0-11 9-20 20-20s20 9 20 20H40z" />
+  <path fill="#2563eb" d="M32 104c0-12 10-22 22-22h12c12 0 22 10 22 22H32z" />  <text x="60" y="78" font-size="22" font-family="Arial, sans-serif" fill="#ffffff" text-anchor="middle" font-weight="700">C</text></svg>

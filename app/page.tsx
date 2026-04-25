@@ -1,3 +1,4 @@
+import Image from "next/image";
 import HeroCarousel from "./components/HeroCarousel";
 import LocationsSection from "./components/LocationsSection";
 import PropertyGallery from "./components/PropertyGallery";
@@ -32,14 +33,16 @@ export default function Home() {
             </div>
             <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {[
-                { quote:'Bienestar Inmobiliario superó todas mis expectativas. Encontraron el penthouse perfecto en tiempo récord. Su servicio personalizado y conocimiento del mercado son incomparables.', name:'Carlos Mendoza' },
-                { quote:'La atención fue excepcional desde el primer contacto. Lograron entender exactamente lo que buscaba y me presentaron propiedades que jamás hubiera encontrado por mi cuenta.', name:'Gabriela Torres' },
-                { quote:'Invertí en tres propiedades con su asesoría y el retorno ha sido excelente. Son verdaderos expertos en el mercado premium.', name:'Roberto Jiménez' },
+                { quote:'Bienestar Inmobiliario superó todas mis expectativas. Encontraron el penthouse perfecto en tiempo récord. Su servicio personalizado y conocimiento del mercado son incomparables.', name:'Carlos Mendoza', avatar:'/carlos.png' },
+                { quote:'La atención fue excepcional desde el primer contacto. Lograron entender exactamente lo que buscaba y me presentaron propiedades que jamás hubiera encontrado por mi cuenta.', name:'Gabriela Torres', avatar:'/gabriela.png' },
+                { quote:'Invertí en tres propiedades con su asesoría y el retorno ha sido excelente. Son verdaderos expertos en el mercado premium.', name:'Liliana Portela', avatar:'/liliana.png' },
               ].map((testimonial) => (
                 <article key={testimonial.name} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 shadow-sm">
                   <p className="text-slate-700">“{testimonial.quote}”</p>
                   <div className="mt-6 flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-slate-200" />
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full bg-slate-200">
+                      <Image src={testimonial.avatar} alt={`${testimonial.name} avatar`} fill className="object-cover" sizes="48px" />
+                    </div>
                     <div>
                       <p className="font-semibold text-slate-950">{testimonial.name}</p>
                     </div>
